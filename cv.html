@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yuwen Huang — CV</title>
+
+  <style>
+    :root{
+      --bg:#f1ece7;
+      --ink:#0e0f11;
+      --muted:rgba(14,15,17,.65);
+      --line:rgba(14,15,17,.12);
+      --black:#0b0b0c;
+      --accent:#d61f1f;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    a{ color:inherit; text-decoration:none; }
+
+    /* HEADER (same as index) */
+    header{
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 26px 34px 22px;
+      position: sticky;
+      top: 0;
+      z-index: 1200;
+    }
+    .topbarInner{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      font-weight: 900;
+      letter-spacing: .6px;
+      line-height: .92;
+      font-size: clamp(56px, 7vw, 110px);
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .topnav{
+      display:flex;
+      gap: 34px;
+      padding-top: 10px;
+      font-size: 15px;
+      align-items:center;
+      justify-content:flex-end;
+      white-space:nowrap;
+      color: rgba(14,15,17,.85);
+    }
+    .topnav a{
+      padding: 6px 10px;
+      border-radius: 999px;
+      opacity:.92;
+    }
+    .topnav a:hover{
+      background: rgba(14,15,17,.06);
+      opacity:1;
+    }
+    .topnav a.active{
+      color: var(--accent);
+      opacity:1;
+    }
+    @media (max-width: 720px){
+      header{ padding: 20px 18px 18px; }
+      .topnav{ gap: 14px; }
+    }
+
+    /* CV LAYOUT */
+    .cvPage{
+      padding: 56px 46px 64px;
+    }
+    .cvGrid{
+      max-width: 1500px;
+      margin: 0 auto;
+      display:grid;
+      grid-template-columns: 1.05fr 1.35fr;
+      gap: 64px;
+      align-items:start;
+    }
+
+    .cvHSerif{
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-weight: 700;
+      letter-spacing: .2px;
+      font-size: clamp(40px, 4.6vw, 74px);
+      margin: 0 0 18px 0;
+    }
+    .cvText{
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(14,15,17,.9);
+      max-width: 62ch;
+      margin: 0;
+    }
+    .cvText + .cvText{ margin-top: 26px; }
+
+    .cvContact{
+      margin-top: 86px;
+      display:flex;
+      align-items:flex-start;
+      gap: 22px;
+      flex-wrap:wrap;
+    }
+    .cvContact .label{
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-weight: 700;
+      letter-spacing:.2px;
+      font-size: clamp(40px, 4.2vw, 70px);
+      margin:0;
+      line-height:1;
+    }
+    .cvContact .info{
+      padding-top: 10px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(14,15,17,.9);
+    }
+
+    .cvRSecTitle{
+      font-weight: 900;
+      letter-spacing: .6px;
+      font-size: clamp(36px, 4.2vw, 68px);
+      margin: 0 0 14px 0;
+      text-transform: uppercase;
+    }
+
+    .cvTable{
+      margin-top: 10px;
+      border-top: 1px solid rgba(14,15,17,.65);
+    }
+
+    /* ✅ Education: 2 columns (school / year) */
+    .cvRowEdu{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(14,15,17,.65);
+      font-size: 17px;
+      line-height: 1.35;
+    }
+    .cvRowEdu .school{ font-weight: 800; }
+    .cvRowEdu .year{ white-space:nowrap; text-align:right; }
+
+    /* Exhibitions: 3 columns */
+    .cvRowExh{
+      display:grid;
+      grid-template-columns: 1.35fr .5fr 1.05fr;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(14,15,17,.65);
+      font-size: 17px;
+      line-height: 1.35;
+    }
+    .cvRowExh .work{ font-weight: 800; }
+    .cvRowExh .year{ white-space:nowrap; }
+    .cvRowExh .place.long{ text-transform: uppercase; letter-spacing:.3px; }
+
+    .cvSpacer{ height: 56px; }
+
+    @media (max-width: 980px){
+      .cvPage{ padding: 44px 22px 56px; }
+      .cvGrid{ grid-template-columns: 1fr; gap: 46px; }
+      .cvContact{ margin-top: 54px; }
+      .cvRowExh{ grid-template-columns: 1.4fr .6fr 1fr; }
+    }
+
+    /* FOOTER */
+    .siteFooter{
+      background: var(--black);
+      color: rgba(255,255,255,.80);
+      padding: 38px 34px 26px;
+    }
+    .footerRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items:center;
+      gap: 18px;
+      font-size: 16px;
+    }
+    .footerLeft{ justify-self:start; }
+    .footerCenter{ justify-self:center; opacity:.9; }
+    .footerRight{ justify-self:end; text-align:right; }
+    .footerRight a{
+      display:block;
+      padding: 4px 0;
+      color: rgba(255,255,255,.78);
+    }
+    .footerRight a:hover{ color:#fff; }
+    .footerCopy{
+      margin-top: 16px;
+      text-align:center;
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+    }
+    @media (max-width: 820px){
+      .footerRow{
+        grid-template-columns: 1fr;
+        justify-items:center;
+        text-align:center;
+      }
+      .footerLeft,.footerCenter,.footerRight{ justify-self:center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="topbarInner">
+      <a class="brand" href="index.html" aria-label="Go to Works">YUWEN HUANG</a>
+      <nav class="topnav" aria-label="Primary">
+        <a class="active" href="cv.html">CV</a>
+        <a href="index.html">Works</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CV CONTENT -->
+  <main class="cvPage" aria-label="CV">
+    <div class="cvGrid">
+
+      <!-- LEFT -->
+      <section>
+        <h2 class="cvHSerif">BIO</h2>
+        <p class="cvText">
+          Yuwen Huang (b.1997, China) currently lives and works in Hamburg. She is a time media artist.
+          Her work is often based on social news and is closely related to the living conditions of contemporary people.
+        </p>
+
+        <p class="cvText">
+          Since 2016, continuous participation in exhibitions, screenings, and performances in Hamburg, Berlin, and Kiel,
+          as well as in China. Her works have been presented, among others, at the HFBK Annual Exhibition 2023–2025
+          (The Headless Street, WG-Gesucht, have a good dream); at NUKLEUS Kiel; at Fleetstreet Theater Hamburg;
+          at HFMT Hamburg; and at the Festival of Animation Berlin.
+        </p>
+
+        <p class="cvText">
+          Her practice works with moving images and installations, addressing uncertainties around identity, migration,
+          and transcultural experience through multi-dimensional narrative structures, where art operates as a form of
+          “alternative journalism.”
+        </p>
+
+        <div class="cvContact">
+          <h2 class="label">CONTACT</h2>
+          <div class="info">
+            <div>chnhyw@gmail.com</div>
+            <div>ins:@iamyuwenhuang</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <section>
+        <h2 class="cvRSecTitle">EDUCATION</h2>
+        <div class="cvTable" role="table" aria-label="Education">
+          <div class="cvRowEdu" role="row">
+            <div class="school" role="cell">Henan University of Economics and Law</div>
+            <div class="year" role="cell">2015–2020</div>
+          </div>
+          <div class="cvRowEdu" role="row">
+            <div class="school" role="cell">Hochschule für bildende Künste – HFBK</div>
+            <div class="year" role="cell">2021–2025</div>
+          </div>
+          <div class="cvRowEdu" role="row">
+            <div class="school" role="cell">Hochschule für bildende Künste – HFBK</div>
+            <div class="year" role="cell">2025–</div>
+          </div>
+        </div>
+
+        <div class="cvSpacer"></div>
+
+        <h2 class="cvRSecTitle">EXHIBITIONS</h2>
+        <div class="cvTable" role="table" aria-label="Exhibitions">
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">You Belong To Me</div>
+            <div class="year" role="cell">2025</div>
+            <div class="place" role="cell">NUKLEUS Kiel</div>
+          </div>
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">The Headless Street</div>
+            <div class="year" role="cell">2025</div>
+            <div class="place" role="cell">HFBK Graduation Exhibition</div>
+          </div>
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">You Belong To Me</div>
+            <div class="year" role="cell">2025</div>
+            <div class="place" role="cell">Fleetstreet Theater</div>
+          </div>
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">Glücksspiel</div>
+            <div class="year" role="cell">2025</div>
+            <div class="place" role="cell">HFMT Hamburg</div>
+          </div>
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">Kieze Kieken</div>
+            <div class="year" role="cell">2025</div>
+            <div class="place" role="cell">Festival of Animation Berlin</div>
+          </div>
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">have a good dream</div>
+            <div class="year" role="cell">2024</div>
+            <div class="place" role="cell">HFBK Annual Exhibition</div>
+          </div>
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">210×297mm</div>
+            <div class="year" role="cell">2023</div>
+            <div class="place" role="cell">Kunstquartier Bethanien, Berlin</div>
+          </div>
+          <div class="cvRowExh" role="row">
+            <div class="work" role="cell">you can cross it</div>
+            <div class="year" role="cell">2025</div>
+            <div class="place long" role="cell">ICAT-INSTITUTE FOR CONTEMPORARY &amp; TRANSFER, Hamburg</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="siteFooter">
+    <div class="footerRow">
+      <div class="footerLeft">chnhyw@gmail.com</div>
+      <div class="footerCenter">Instagram&nbsp;&nbsp;&nbsp;&nbsp;@iamyuwenhuang</div>
+      <div class="footerRight">
+        <a href="cv.html">CV</a>
+        <a href="index.html">Works</a>
+      </div>
+    </div>
+    <div class="footerCopy">© 2026 by Yuwen Huang</div>
+  </footer>
+
+</body>
+</html>
